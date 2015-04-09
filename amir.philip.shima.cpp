@@ -1,11 +1,11 @@
-//-----------------------------------------------------------------------------
-//
-// Earthquakes' Events Analysis
-// By Amirhossein Naemi
-// March, 2015
-// GIT: https://github.com/amirhossein-naemi/Earthquakes-Analysis-v3
-//
-//-----------------------------------------------------------------------------
+/*
+ * H8 Program
+ * Earthquakes' Events Analysis
+ * By Amirhossein & Philip & Shima
+ * April 2015
+ * No Copyright
+ * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
+ */
 
 #include "earthquake.h"
 #include "station.h"
