@@ -1,5 +1,5 @@
 /*
- * This File Contains Functions of the Earthquake Class
+ * This File Contains Prototypes and Varibles of the Station Class
  * By Amirhossein & Philip & Shima
  * April 2015
  * No Copyright
