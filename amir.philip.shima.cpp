@@ -33,6 +33,12 @@ using namespace std;
 
 // Function Prototype
 
+void open_input ( ifstream & ); // Done by Amir
+void open_file ( string, ofstream & ); // Done by Philip
+void read_header(ifstream & in, ofstream & log); // Done by Shima
+void read_data(ifstream & in, ofstream & out, ofstream & log); // Done by Amir
+void process(ifstream & ifile, ofstream & log); // Done by Philip
+
 
 // ********************************************************************************************************************
 
