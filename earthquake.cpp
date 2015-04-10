@@ -82,3 +82,73 @@ void earthquake::set_elv(string a){
     }
 }
 
+// day 
+void earthquake::set_day(int d) {
+    try
+    {
+        if (d < 1 || d > 31)
+            throw (20);
+        else
+            day = d;
+    }
+    catch (int e)
+    {
+        cout << "Value of dayy is invalid" << endl;
+    }
+}
+
+void earthquake::set_day(string a){
+    int b = str2int(a);
+    set_day(b);
+}
+void earthquake::set_sec(int a) {
+    try
+    {
+        if (a < 0 || a > 59)
+            throw (22);
+        else
+            sec = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of second is invalid" << e << endl;
+    }
+}
+
+void earthquake::set_sec(string a){
+    try
+    {
+        int b = str2int(a);
+        set_sec(b);
+    }
+    catch (int e)
+    {
+        set_sec(-1);
+    }
+}
+
+void earthquake::set_ms(double a) {
+    try
+    {
+        if (a < 0 || a > 59)
+            throw (22);
+        else
+            sec = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of ms is invalid" << e << endl;
+    }
+}
+
+void earthquake::set_ms(string a){
+    try
+    {
+        int b = str2int(a);
+        set_ms(b);
+    }
+    catch (int e)
+    {
+        set_ms(-1);
+    }
+}
