@@ -14,3 +14,10 @@
 #include "print.h"
 using namespace std;
 
+// This "print_file" function Prints Messages on Files and Terminal. Message Is of String Type.
+
+void print_file ( string message, ofstream & ofs ) {
+    ofs << message << flush;
+    cout << message << flush;
+    return;
+}
