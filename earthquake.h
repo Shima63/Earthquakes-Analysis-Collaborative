@@ -112,8 +112,6 @@ class station {
         int str2int(const std::string& str);
         months mnth_str2enum(string mnth);
         void print(ofstream &, stringstream &, bool only2file = false);
-        void toupper_str(std::string&);
-        string toupper_str_C(std::string str);
         std::vector<std::string> &split(const std::string &s, char delim,
         std::vector<std::string> &elems);
         std::vector<std::string> split(const std::string &s, char delim);
