@@ -5,6 +5,10 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
+ 
+#include "station.h"  
+#include "earthquake.h"
+
 int type_of_band_enum(string str_type_of_band) {
     
     str_type_of_band = toupper_str_C(str_type_of_band);
