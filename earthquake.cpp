@@ -54,3 +54,31 @@ void earthquake::set_magnitude(string a){
         set_magnitude(-1);
     }
 }
+
+// This "set_elv" Function Is Checking the Validity of Elevation. ( It Works with Double and String)
+
+void earthquake::set_elv(double a) {
+    try
+    {
+        if (a < 0 || a > 100000)
+            throw (22);
+        else
+            elv = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of elv is invalid" << e << endl;
+    }
+}
+void earthquake::set_elv(string a){
+    try
+    {
+        int b = str2int(a);
+        set_elv(b);
+    }
+    catch (int e)
+    {
+        set_elv(-1);
+    }
+}
+
