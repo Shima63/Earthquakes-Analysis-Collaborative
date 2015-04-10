@@ -57,6 +57,22 @@ bool station::set_type_of_band(string a){
     }
 }
 
+bool station::set_station_name(string a) {
+    try
+    {
+        if (!isok_station_code(a))
+            throw (51);
+        else
+            station_name = a;
+        return true;
+    }
+    catch (int e)
+    {
+        //cout << "Value of station name is invalid" << e << endl;
+        return false;
+    }
+}
+
 string types_of_band_strf[3] = { "Longperiod", "Shortperiod", "Broadband" };
 string types_of_band_str[3] = { "L", "B", "H" };
 char types_of_band_char[3] = { 'L', 'B', 'H' };
