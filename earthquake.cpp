@@ -5,6 +5,80 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
+ int str2int(const std::string& str)
+{
+    int result = 0;
+    
+    std::string::const_iterator i = str.begin();
+    
+    if (i == str.end())
+        return false;
+    
+    bool negative = false;
+    
+    if (*i == '-')
+    {
+        negative = true;
+        ++i;
+        
+        if (i == str.end())
+            return false;
+    }
+    
+    result = 0;
+    
+    for (; i != str.end(); ++i)
+    {
+        if (*i < '0' || *i > '9')
+            return false;
+        
+        result *= 10;
+        result += *i - '0';
+    }
+    
+    if (negative)
+        result = -result;
+    
+    return result;
+}
+// months
+const char *months2str[] = { "January", "February", "March", "April", "May",
+    "June", "July", "August", "September", "October", "November", "December" };
+string earthquake::get_month_str() { return months2str[month]; }
+
+months mnth_str2enum(string mnth) {
+    
+    int imnth = str2int(mnth);
+    
+    switch (imnth) {
+        case 1:
+            return January;
+        case 2:
+            return February;
+        case 3:
+            return March;
+        case 4:
+            return April;
+        case 5:
+            return May;
+        case 6:
+            return June;
+        case 7:
+            return July;
+        case 8:
+            return August;
+        case 9:
+            return September;
+        case 10:
+            return  October;
+        case 11:
+            return November;
+        case 12:
+            return December;
+    }
+    return December;
+}
+ 
 void earthquake::set_lon(double a) {
     try
     {
