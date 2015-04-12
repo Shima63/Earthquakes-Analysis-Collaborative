@@ -226,3 +226,17 @@ void earthquake::set_ms(string a){
         set_ms(-1);
     }
 }
+
+
+void print(ofstream & o, stringstream & txt, bool only2file) {
+    
+    std::cout.precision(3);
+    o.precision(3);
+    
+    if (!only2file) cout << txt.str();
+    
+    o << txt.str();
+    
+    txt.str(std::string());
+    txt.clear();
+}
