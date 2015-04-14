@@ -5,6 +5,9 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
+ 
+#ifndef EARTHQUAKE_H
+#define EARTHQUAKE_H
 
 // External Libraries
 
@@ -25,8 +28,6 @@ using namespace std;
 
 // Variables
 
-#ifndef EARTHQUAKE_H
-#define EARTHQUAKE_H
 string id;
 string date;
 string time;
