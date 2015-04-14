@@ -133,3 +133,5 @@ class earthquake {
         double magnitude;
 
 };
+
+#endif
