@@ -14,7 +14,6 @@
 using namespace std;
 
 void print ( ofstream &, stringstream &, bool );
-string uppercase ( string );
 void toupper_str(std::string&);
 string toupper_str_C(std::string str);
 void tolower_str(std::string&);
