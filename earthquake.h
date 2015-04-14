@@ -35,7 +35,7 @@ string earthquake_name;
     
 // Class Definition
     
-class station {
+class earthquake {
     
     public:
     
