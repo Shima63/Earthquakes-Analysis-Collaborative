@@ -92,10 +92,32 @@ int main ( int argc, char * argv[] ) { // Able to Get Multiple Input Files
 // Functions
 
 // This open_input Function Is Openning the Input Files and Is Checking for Their Sanity
-
+int open_input(ifstream & ifile, string ifilename, ofstream & log) {
+    // Sanity check on the file stream
+    
+    ifile.open(ifilename.c_str());
+    if (!ifile.is_open()) {
+        stringstream str;
+        str << "Error! Cannot open input file: " << ifilename << endl;
+        print(log, str);
+        return -1;
+    }
+    
+    return 0;
+}
 
 // This open_output Function Is Openning the OUTput and Log Files and Is Checking for Their Sanity
-
+int open_output(ofstream & o, string ofilename) {
+    
+    // Print on output file
+    o.open(ofilename.c_str());
+    if (!o.is_open()) {
+        cout << "Error! The output file: " + ofilename + " is locked\n";
+        return -1;
+    }
+    
+    return 0;
+}
 
 // This read_header Function Is Openning the Input Files and Is Checking for Their Sanity
 
