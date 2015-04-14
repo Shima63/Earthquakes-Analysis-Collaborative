@@ -92,7 +92,9 @@ int main ( int argc, char * argv[] ) { // Able to Get Multiple Input Files
 // Functions
 
 // This open_input Function Is Openning the Input Files and Is Checking for Their Sanity
+
 int open_input(ifstream & ifile, string ifilename, ofstream & log) {
+    
     // Sanity check on the file stream
     
     ifile.open(ifilename.c_str());
@@ -107,9 +109,11 @@ int open_input(ifstream & ifile, string ifilename, ofstream & log) {
 }
 
 // This open_output Function Is Openning the OUTput and Log Files and Is Checking for Their Sanity
+
 int open_output(ofstream & o, string ofilename) {
     
     // Print on output file
+    
     o.open(ofilename.c_str());
     if (!o.is_open()) {
         cout << "Error! The output file: " + ofilename + " is locked\n";
@@ -118,6 +122,7 @@ int open_output(ofstream & o, string ofilename) {
     
     return 0;
 }
+
 // This read_header Function Is Openning the Input Files and Is Checking for Their Sanity
 
 int read_header ( ifstream & in, ofstream & log, earthquake & EQ ) {
@@ -163,6 +168,7 @@ int read_header ( ifstream & in, ofstream & log, earthquake & EQ ) {
 }
 
 // This read_data Function Is Getting the Earthquake Stations' Data
+
 int read_data(ifstream & in, ofstream & out, ofstream & log, earthquake & EQ) {
     
     stringstream str;
@@ -312,17 +318,3 @@ int process_file ( string fn ) {
     
     return 0;
 }
-
-int open_output(ofstream & o, string ofilename) {
-    
-    // Print on output file
-    o.open(ofilename.c_str());
-    if (!o.is_open()) {
-        cout << "Error! The output file: " + ofilename + " is locked\n";
-        return -1;
-    }
-    
-    return 0;
-}
-
-
