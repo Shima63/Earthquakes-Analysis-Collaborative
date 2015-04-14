@@ -28,19 +28,19 @@ using namespace std;
 
 // Global Variables
 
-ofstream log;
+ofstream     log;
 stringstream str;
 
 // ********************************************************************************************************************
 
 // Function Prototype
 
-int open_input ( ifstream &, string, ofstream & ); // Done by Amir
-int open_output ( ofstream &, string ); // Done by Philip
-int read_header ( ifstream &, ofstream &, earthquake & ); // Done by Shima
-int read_data ( ifstream &, ofstream &, ofstream &, earthquake & ); // Done by Amir
-int process ( ifstream &, ofstream &, earthquake & ); // Done by Philip
-int process_file ( string ); // Done by Shima
+int open_input   ( ifstream &, string, ofstream & );                   // Done by Amir
+int open_output  ( ofstream &, string );                               // Done by Philip
+int read_header  ( ifstream &, ofstream &, earthquake & );             // Done by Shima
+int read_data    ( ifstream &, ofstream &, ofstream &, earthquake & ); // Done by Amir
+int process      ( ifstream &, ofstream &, earthquake & );             // Done by Philip
+int process_file ( string );                                           // Done by Shima
 
 // ********************************************************************************************************************
 
