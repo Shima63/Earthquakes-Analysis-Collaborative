@@ -5,7 +5,10 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
- 
+
+#ifndef STATION_H
+#define STATION_H
+
 // External Libraries
 
 #include <iostream>
@@ -107,3 +110,5 @@ class station {
 };
 
 // The end
+
+#endif
