@@ -14,24 +14,49 @@
 #include "print.h"
 using namespace std;
 
-// This "print_file" function Prints Messages on Files and Terminal. Message Is of String Type.
+// This "print" function Prints Messages on Files and Terminal. Message Is of Stringstream Type.
 
-void print_file ( string message, ofstream & ofs ) {
-    ofs << message << flush;
-    cout << message << flush;
-    return;
+void print(ofstream & o, stringstream & txt, bool only2file) {
+    
+    cout.precision ( 3 );
+    o.precision ( 3 );
+    
+    if ( !only2file ) cout << txt.str ();
+    
+    o << txt.str ();
+    
+    txt.str ( string ());
+    txt.clear ();
 }
 
-void toupper_str(std::string& str) {
+// These Functions Are for Changing to Uppercase
+
+void toupper_str ( string & str ) {
     
-    for (size_t i = 0; i < str.size(); ++i)
-        str[i] = toupper(str[i]);
+    for ( size_t i = 0; i < str.size (); ++i )
+        str[i] = toupper ( str[i] );
     
 }
 
-string toupper_str_C(std::string str) {
+string toupper_str_C ( string str ) {
     
     toupper_str(str);
     
     return str;
 }
+
+// These Functions Are for Changing to Lower Case
+
+void tolower_str ( string & str ) {
+
+    for ( size_t i = 0; i < str.size (); ++i )
+        str[i] = tolower( str[i] );
+}
+
+string tolower_str_C ( string str ) {
+
+    tolower_str ( str );
+    return str;
+}
+
+
