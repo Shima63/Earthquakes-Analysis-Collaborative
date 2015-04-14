@@ -163,6 +163,87 @@ int read_header ( ifstream & in, ofstream & log, earthquake & EQ ) {
 }
 
 // This read_data Function Is Getting the Earthquake Stations' Data
+int read_data(ifstream & in, ofstream & out, ofstream & log, earthquake & EQ) {
+    
+    stringstream str;
+    string eqnet, eqst, eqbnd, eqins, eqor;
+    station   eqtmp;
+    int  cnt = 0, i = 0;
+    bool noerr;
+    
+    while (in >> eqnet) {
+        cnt++;
+        noerr = true;
+        try
+        {
+            in >> eqst >> eqbnd >> eqins >> eqor;
+            
+            if (!eqtmp.set_network_code(eqnet))
+            {
+                noerr = false;
+                str << "Entry # " << setw(3) << right << cnt
+                << " ignored. Invalid network.\n";
+                print(log, str);
+            }
+            
+            if (!eqtmp.set_station_name(eqst))
+            {
+                noerr = false;
+                str << "Entry # " << setw(3) << right << cnt
+                << " ignored. Invalid station name.\n";
+                print(log, str);
+            }
+            
+            if (!eqtmp.set_type_of_band(eqbnd))
+            {
+                noerr = false;
+                str << "Entry # " << setw(3) << cnt
+                << " ignored. Invalid band type.\n";
+                print(log, str);
+            }
+            
+            if (!eqtmp.set_type_of_instrument(eqins))
+            {
+                noerr = false;
+                str << "Entry # " << setw(3) << cnt
+                << " ignored. Invalid instrument.\n";
+                print(log, str);
+            }
+            
+            if (!eqtmp.set_orientation(eqor))
+            {
+                noerr = false;
+                str << "Entry # " << setw(3) << cnt
+                << " ignored. Invalid Orientation.\n";
+                print(log, str);
+            }
+            
+            if (is_there_any_err(eqtmp))
+                throw (30);
+        }
+        catch (int e)
+        {
+            // any other errors
+            noerr = false;
+            cout << "An exception occurred. Exception Nr. " << e << '\n';
+        }
+
+        if (noerr) {
+            EQ.stations.push_back(eqtmp);
+            i++;
+        }
+    }
+    
+    EQ.invalid = cnt - i;
+    EQ.valid = i;
+    if (EQ.valid < 1) {
+        str << "logor! input number should be equal or greater than 1\n";
+        print(log, str);
+        return -1;
+    }
+
+    return 0;
+}
 
 // This process Function Is Doing the Processing
 
