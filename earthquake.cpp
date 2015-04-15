@@ -240,3 +240,83 @@ void print(ofstream & o, stringstream & txt, bool only2file) {
     txt.str(std::string());
     txt.clear();
 }
+
+bool isok_magnitude(string str){
+    toupper_str(str);
+    if (str == "ML" || str == "MS" || str == "MB" || str == "MW")
+        return true;
+    return false;
+}
+const char *magnitude_type2str[] = { "ML", "Ms", "Mb", "Mw" };
+int magnitude_Type_enum(string str) {
+    
+    toupper_str(str);
+    
+    if (str == "ML")
+        return 0;
+    if (str == "MS")
+        return 1;
+    if (str == "MB")
+        return 2;
+    if (str == "MW")
+        return 3;
+    
+    return -1;
+}
+
+string earthquake::get_magnitude_Type_str() {
+    return magnitude_type2str[magnitude_Type];
+}
+
+void earthquake::set_magnitude_Type(magnitude_type a) {
+    try
+    {
+        magnitude_Type = a;
+    }
+    
+    catch (int e)
+    {
+        cout << "Value of magnitude Type is invalid" << endl;
+    }
+}
+void earthquake::set_magnitude_Type(string a) {
+    try
+    {
+        set_magnitude_Type((magnitude_type)magnitude_Type_enum(a));
+    }
+    catch (int e)
+    {
+        cout << "Value of month is invalid" << endl;
+    }
+}
+
+
+
+
+void earthquake::set_magnitude(double a) {
+    try
+    {
+        if (a < 0 || a > 12)
+            throw (22);
+        else
+            magnitude = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of magnitude is invalid" << e << endl;
+    }
+}
+void earthquake::set_magnitude(string a){
+    try
+    {
+        int b = str2int(a);
+        set_magnitude(b);
+    }
+    catch (int e)
+    {
+        set_magnitude(-1);
+    }
+}
+
+
+
