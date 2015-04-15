@@ -252,7 +252,48 @@ int read_data(ifstream & in, ofstream & out, ofstream & log, earthquake & EQ) {
 }
 
 // This process Function Is Doing the Processing
+int process(ifstream & ifile, ofstream & log, earthquake & EQ){
+    
+    double el = EQ.get_lon();
+    stringstream str, str2;
+    str.precision(3);
+    str << "# " << EQ.get_day() << " " << EQ.get_month_str() << " "
+    << EQ.get_year() << " " << setfill('0') << setw(2) << EQ.get_hour()
+    << ":" << setfill('0') << setw(2) << EQ.get_min() << ":" << setfill('0')
+    << setw(2) << EQ.get_sec() << '.' << setfill('0') << setw(3)
+    << std::setprecision(0) << std::fixed << EQ.get_ms() << " " << EQ.tz
+    << " " << EQ.get_magnitude_Type_str() << " " << std::fixed
+    << std::setprecision(1) << EQ.get_magnitude() << " "
+    << EQ.earthquake_name << " [" << EQ.id << "] (" << std::setprecision(2)
+    << std::fixed << EQ.get_lon() << ", " << std::fixed << EQ.get_lat()
+    << ", " << std::setprecision(1) << EQ.get_elv() << ")" << endl;
+    
+    EQ.sign = 0;
+    
+    for (int i = 0; i < EQ.valid; i++) {
+        string s = EQ.stations[i].get_orientation();
+        unsigned int n = s.size();
+        for (size_t j = 0; j < n; j++) {
+            
+            str2 << EQ.id << '.'
+            << EQ.stations[i].get_network_code_str() << '.'
+            << EQ.stations[i].get_station_name() << '.'
+            << EQ.stations[i].get_type_of_band_str()
+            << EQ.stations[i].get_type_of_instrument_str()
+            << s[j] << endl;
+            
+            EQ.sign++;
+        }
+    }
+    
+    str << EQ.sign << endl;
+    
+    print(log, str, true);
+    
+    print(log, str2, true);
 
+    return 0;
+}
 // This Process_file Function Is Doing the Main Process of Producing Signals
 
 int process_file ( string fn ) {
