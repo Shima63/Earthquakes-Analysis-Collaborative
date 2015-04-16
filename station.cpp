@@ -136,7 +136,10 @@ bool isok_network_code ( string str ) {
     return false;
 }
 
+// Definition of Network
+
 string network_codes_str [ 5 ] = { "CE", "CI", "FA", "NP", "WR" };
+
 string station::get_network_code_str () {
     return network_codes_str [ network_code ];
 }
@@ -169,7 +172,6 @@ bool station::set_network_code ( string network_codes_value ) {
     }
 }
 
-
 int type_of_instrument_enum ( string str_type_of_inst ) {
     toupper_str ( str_type_of_inst );
     //Case insensitive
@@ -183,6 +185,16 @@ int type_of_instrument_enum ( string str_type_of_inst ) {
         return 2;
     }    
     return -1;
+}
+
+// Definitions of instruments
+
+string types_of_instrument_strf [ 3 ] = { "High_Gain", "Low_Gain", "Accelerometer" };
+string types_of_instrument_str [ 3 ] = { "H", "L", "N" };
+char types_of_instrument_char [ 3 ] = { 'H', 'L', 'N' };
+
+string station::get_type_of_instrument_str () {
+    return types_of_instrument_str [ type_of_instrument ];
 }
 
 bool station::set_type_of_instrument ( types_of_instrument a ) {
@@ -206,16 +218,6 @@ bool station::set_type_of_instrument ( string a ) {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
-}
-
-// Definitions of instruments
-
-string types_of_instrument_strf [ 3 ] = { "High_Gain", "Low_Gain", "Accelerometer" };
-string types_of_instrument_str [ 3 ] = { "H", "L", "N" };
-char types_of_instrument_char [ 3 ] = { 'H', 'L', 'N' };
-
-string station::get_type_of_instrument_str () {
-    return types_of_instrument_str [ type_of_instrument ];
 }
 
 // Definitions of bands
@@ -286,4 +288,21 @@ bool isok_Orientation ( string str ) {
     }
     return true;
 }
+
+bool station::set_orientation ( string a ) {
+    try {
+        if ( !isok_Orientation ( a ) ) {
+            throw ( 51 );
+        }    
+        else {
+            Orientation = a;
+        }
+        return true;
+    }
+    catch ( int e ) {
+        //cout << "Value of Orientation is invalid" << e << endl;
+        return false;
+    }
+}
+
 
