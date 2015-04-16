@@ -21,7 +21,7 @@ using namespace std;
 
 // This "print" function Prints Messages on Files and Terminal. Message Is of Stringstream Type.
 
-void print ( ofstream & o, stringstream & txt, bool only2file ) {
+void print ( ofstream & o, stringstream & txt, bool only2file /* = false */ ) {
     cout.precision ( 3 );
     o.precision ( 3 );
     if ( !only2file ) {
@@ -31,6 +31,10 @@ void print ( ofstream & o, stringstream & txt, bool only2file ) {
     txt.str ( string () );
     txt.clear ();
     return;
+}
+
+void print ( ofstream & o, stringstream & txt) {
+    print( o, txt, false );
 }
 
 // These Functions Are for Changing to Uppercase
@@ -59,5 +63,3 @@ string tolower_str_C ( string str ) {
     tolower_str ( str );
     return str;
 }
-
-
