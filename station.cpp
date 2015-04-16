@@ -136,75 +136,73 @@ bool isok_network_code ( string str ) {
     return false;
 }
 
-string network_codes_str[5] = { "CE", "CI", "FA", "NP", "WR" };
-string station::get_network_code_str(){
-    return network_codes_str[network_code];
+string network_codes_str [ 5 ] = { "CE", "CI", "FA", "NP", "WR" };
+string station::get_network_code_str () {
+    return network_codes_str [ network_code ];
 }
 
-bool station::set_network_code(network_codes network_codes_value){
-    try
-    {
+bool station::set_network_code ( network_codes network_codes_value ) {
+    try {
         network_code = network_codes_value;
         return true;
     }
-    catch (int e)
+    catch ( int e )
     {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
 
-bool station::set_network_code(string network_codes_value){
-    try
-    {
-        if (!isok_network_code(network_codes_value))
-            throw (51);
-        else
-            network_code = (network_codes)network_code_enum(network_codes_value);
+bool station::set_network_code ( string network_codes_value ) {
+    try {
+        if ( !isok_network_code ( network_codes_value ) ) {
+            throw ( 51 );
+        }    
+        else {
+            network_code = ( network_codes ) network_code_enum ( network_codes_value );
+        }    
         return true;
     }
-    catch (int e)
-    {
+    catch ( int e ) {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
 
 
-int type_of_instrument_enum(string str_type_of_inst) {
-    toupper_str(str_type_of_inst);
+int type_of_instrument_enum ( string str_type_of_inst ) {
+    toupper_str ( str_type_of_inst );
     //Case insensitive
-    if (str_type_of_inst == "HIGH-GAIN")
+    if ( str_type_of_inst == "HIGH-GAIN" ) {
         return 0;
-    if (str_type_of_inst == "LOW-GAIN")
+    }    
+    if ( str_type_of_inst == "LOW-GAIN" ) {
         return 1;
-    if (str_type_of_inst == "ACCELEROMETER")
+    }    
+    if ( str_type_of_inst == "ACCELEROMETER" ) {
         return 2;
+    }    
     return -1;
 }
 
-bool station::set_type_of_instrument(types_of_instrument a) {
-    try
-    {
+bool station::set_type_of_instrument ( types_of_instrument a ) {
+    try {
         type_of_instrument = a;
         return true;
     }
-    catch (int e)
+    catch ( int e )
     {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
 
-bool station::set_type_of_instrument(string a){
-    try
-    {
-        type_of_instrument =
-            (types_of_instrument)type_of_instrument_enum(a);
+bool station::set_type_of_instrument ( string a ) {
+    try {
+        type_of_instrument = ( types_of_instrument ) type_of_instrument_enum ( a );
         return true;
     }
-    catch (int e)
-    {
+    catch ( int e ) {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
