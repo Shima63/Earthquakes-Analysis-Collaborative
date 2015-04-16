@@ -48,19 +48,16 @@ class station {
         
         // Done by Philip
         string get_type_of_band_str ();
-        types_of_band get_type_of_band () { return type_of_band; }
         bool set_type_of_band ( types_of_band );
         bool set_type_of_band ( string );
     
         // Done by Shima
         string get_type_of_instrument_str ();
-        types_of_instrument get_type_of_instrument () { return type_of_instrument; }
         bool set_type_of_instrument ( types_of_instrument );
         bool set_type_of_instrument ( string );
     
         // Done by Amir
         string get_network_code_str ();
-        network_codes get_network_code () { return network_code; }
         bool set_network_code ( network_codes );
         bool set_network_code ( string );
     
