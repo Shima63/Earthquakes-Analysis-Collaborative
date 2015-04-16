@@ -461,6 +461,65 @@ string earthquake::get_magnitude_Type_str() {
     return magnitude_type2str[magnitude_Type];
 }
 
+bool isok_magnitude_size(double magnitude) {
+    if (magnitude <= 0)
+        return false;
+    return true;
+}
+
+int earthquake::set_mag(string lm, ofstream & log){
+
+    // Fourth row: epicenter location (three doubles: longitude, latitude, and
+    // depth), followed by magnitude type and magnitude size (a string and a
+    // float, respectively). e.g. -115.66 31.53 0.9 mw 4.9
+
+    int err = 0;
+    char* pEnd;
+    stringstream str;
+    string longitude, latitude, elevation, geo, magnitude_type, magnitude_size;
+    double fmagnitude_size;
+    
+    //istringstream is not standard/not compatible with mingw
+    
+    std::vector<std::string> astr = split(lm, ' ');
+    
+    longitude = astr[0];
+    latitude = astr[1];
+    elevation = astr[2];
+    magnitude_type = astr[3];
+    magnitude_size = astr[4];
+    
+    char cmagnitude_size[50];
+    strcpy(cmagnitude_size, magnitude_size.c_str());
+    
+    fmagnitude_size = std::strtod(cmagnitude_size, &pEnd);
+    if (!isok_magnitude(magnitude_type))
+    {
+        str << "Error! Magnitude type is invalid" << endl;
+        print(log, str);
+        return 110;
+    }
+
+    char clongitude[10], clatitude[10], celevation[10];
+    
+    strcpy(clongitude, longitude.c_str());
+    strcpy(clatitude, latitude.c_str());
+    strcpy(celevation, elevation.c_str());
+    
+    set_lon(std::strtod(clongitude, &pEnd));
+    set_lat(std::strtod(clatitude, &pEnd));
+    set_elv(std::strtod(celevation, &pEnd));
+    
+    if (!isok_magnitude_size(fmagnitude_size))
+    {
+        str << "Error! Magnitude must be real positive" << endl;
+        print(log, str);
+        return 111;
+    }
+
+    return 0;
+}
+
 void earthquake::set_magnitude_Type(magnitude_type a) {
     try
     {
