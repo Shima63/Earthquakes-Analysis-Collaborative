@@ -11,14 +11,13 @@
 
 // External Libraries
 
+#include "print.h"
+#include "earthquake.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
-// Defined Libraries
 
-#include "print.h"
-#include "earthquake.h"
 
 // Defining Variables
 
@@ -47,12 +46,8 @@ enum network_codes {
 enum Orientation {
     N, E, Z
 };
-
-#ifndef STATION_H
-#define STATION_H
     
 class station {
-    
     public:
     
         // Set and Get 
@@ -110,5 +105,4 @@ class station {
 };
 
 // The end
-
 #endif

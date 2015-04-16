@@ -5,6 +5,9 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
+
+#include "earthquake.h"
+
  int str2int(const std::string& str)
 {
     int result = 0;
