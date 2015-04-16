@@ -331,6 +331,115 @@ bool isok_magnitude(string str){
         return true;
     return false;
 }
+
+
+int earthquake::set_dt(string str2, ofstream & log)
+{
+    int err=0;
+
+    stringstream stro;
+    string sdt, stm, stz;
+    string syear, smnth, sday, shour, smin, ssec, sms;
+    
+    try {
+        
+        char str[50];
+        strncpy(str, str2.c_str(), sizeof(str));
+        str[sizeof(str)-1] = 0;
+        
+        replace(str, str + strlen(str), '/', ' ');
+        replace(str, str + strlen(str), ':', ' ');
+        
+        std::vector<std::string> aln = split(str2, ' ');
+        std::vector<std::string> adt = split(aln[0], '/');
+        if (adt.size() != 3) throw (61);
+        std::vector<std::string> atm = split(aln[1], ':');
+        if (atm.size() != 3) throw (62);
+        std::vector<std::string> asc = split(atm[2], '.');
+        
+        
+        // date
+        size_t n1 = adt.size();
+        for (size_t i = 0; i < n1; i++)
+        {
+            size_t n2 = adt[i].size();
+            for (size_t ii = 0; ii < n2; ii++)
+            {
+                if (!isdigit(adt[i][ii]))
+                    throw (61);
+                // there is an error
+            }
+        }
+        sday = adt[1];
+        syear = adt[2];
+        
+        
+        //EQ.month = mnth_str2enum(adt[0]);
+        set_month(adt[0]);
+        //EQ.day = str2int(day);
+        set_day(sday);
+        //EQ.yr = str2int(year);
+        set_year(syear);
+        
+        
+        // time
+        n1 = atm.size() - 1;
+        for (size_t i = 0; i < n1; i++)
+        {
+            size_t n2 = atm[i].size();
+            for (size_t ii = 0; ii < n2; ii++)
+            {
+                if (!isdigit(atm[i][ii]))
+                    throw (62);
+                // there is an error
+            }
+        }
+        
+        if (aln.size() != 3)
+            throw (63);
+        if (!isok_timezone(aln[2]))
+            throw (63);
+        
+        shour = atm[0];
+        smin = atm[1];
+        ssec = asc[0];
+        sms = asc[1];
+        stz = aln[2];
+        
+        hr = str2int(shour);
+        min = str2int(smin);
+        sec = str2int(ssec);
+        ms = str2int(sms);
+        
+    }
+    catch (int e) {
+        
+        if (e == 61){
+            stro << "Error! date is invalid" << endl;
+            print(log, stro);
+            return 100;
+        }
+        
+        if (e == 62){
+            stro << "Error! time is invalid" << endl;
+            print(log, stro);
+            return 101;
+        }
+        
+        if (e == 63){
+            stro << "Error! time zone is invalid" << endl;
+            print(log, stro);
+            return 102;
+        }
+        
+        stro << "Error! date / time is invalid" << endl;
+        print(log, stro);
+        return 103;
+    }
+
+    return err;
+}
+
 const char *magnitude_type2str[] = { "ML", "Ms", "Mb", "Mw" };
 int magnitude_Type_enum(string str) {
     
