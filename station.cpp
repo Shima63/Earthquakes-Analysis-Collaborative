@@ -9,76 +9,83 @@
 #include "station.h"  
 #include "earthquake.h"
 
-int type_of_band_enum(string str_type_of_band) {
+int type_of_band_enum ( string str_type_of_band ) {
     
-    str_type_of_band = toupper_str_C(str_type_of_band);
-    toupper_str(str_type_of_band);
+    str_type_of_band = toupper_str_C ( str_type_of_band );
+    toupper_str ( str_type_of_band );
     
-    if (str_type_of_band == "LONG-PERIOD")
+    if ( str_type_of_band == "LONG-PERIOD" ) {
         return 0;
-    if (str_type_of_band == "SHORT-PERIOD")
+    }    
+    if ( str_type_of_band == "SHORT-PERIOD" ) {
         return 1;
-    if (str_type_of_band == "BROADBAND")
+    }
+    if ( str_type_of_band == "BROADBAND" ) {
         return 2;
+    }    
     return -1;
 }
 
-bool isok_type_of_band(string str){
+bool isok_type_of_band ( string str ) {
     
     // Type of band: Case insensitive and only One word. Can be of the following
     // to be valid 
     // string type_of_band;
-    types_of_band t = (types_of_band)type_of_band_enum(str);
-    if (t<0 || t>2) return false;
+    
+    types_of_band t = ( types_of_band ) type_of_band_enum ( str );
+    if ( t < 0 || t > 2) return false;
     return true;
 }
 
-bool station::set_type_of_band(types_of_band a){
-    try
-    {
+bool station::set_type_of_band ( types_of_band a ) {
+    try {
         type_of_band = a;
         return true;
     }
-    catch (int e)
-    {
+    catch ( int e ) {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
-bool station::set_type_of_band(string a){
-    try
-    {
-        if (!isok_type_of_band(a))
-            throw (51);
+bool station::set_type_of_band ( string a ) {
+    try {
+        if ( !isok_type_of_band ( a ) )
+            throw ( 51 );
         else
-            type_of_band = (types_of_band)type_of_band_enum(a);
+            type_of_band = ( types_of_band ) type_of_band_enum ( a );
         return true;
     }
-    catch (int e)
+    catch ( int e )
     {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
 
-int network_code_enum(string str_net_code) {
+int network_code_enum ( string str_net_code ) {
+    
     // Case Sensitive
-    if (str_net_code == "CE")
+    
+    if ( str_net_code == "CE" ) {
         return 0;
-    if (str_net_code == "CI")
+    }    
+    if ( str_net_code == "CI" ) {
         return 1;
-    if (str_net_code == "FA")
+    }    
+    if ( str_net_code == "FA" ) {
         return 2;
-    if (str_net_code == "NP")
+    }    
+    if ( str_net_code == "NP" ) {
         return 3;
-    if (str_net_code == "WR")
+    }    
+    if ( str_net_code == "WR" ) {
         return 4;
+    }    
     return -1;
 }
 
-string type_of_inst_string(types_of_instrument type_of_inst) {
-    
-    switch (type_of_inst) {
+string type_of_inst_string ( types_of_instrument type_of_inst ) {
+    switch ( type_of_inst ) {
         case High_Gain:
             return "High Gain";
         case Low_Gain:
@@ -91,40 +98,36 @@ string type_of_inst_string(types_of_instrument type_of_inst) {
 }
 
 // check for rest of the errors
-bool is_there_any_err(station st) {
-    
+
+bool is_there_any_err ( station st ) {
     //if (st.get_network_code() <1 || st.get_network_code() >5) // err
     //    return true;
-    
     return false;
 }
 
-bool station::set_station_name(string a) {
-    try
-    {
-        if (!isok_station_code(a))
-            throw (51);
+bool station::set_station_name ( string a ) {
+    try {
+        if ( !isok_station_code ( a ) )
+            throw ( 51 );
         else
             station_name = a;
         return true;
     }
-    catch (int e)
-    {
+    catch ( int e ) {
         //cout << "Value of station name is invalid" << e << endl;
         return false;
     }
 }
 
-bool isok_network_code(string str){
-
-    if (str.size() == 2)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            if (!isalpha(str[i]))
+bool isok_network_code ( string str ) {
+    if ( str.size () == 2 ) {
+        for ( int i = 0; i < 2; i++ ) {
+            if ( !isalpha ( str [ i ] ) ) {
                 return false;
-            if (!isupper(str[i]))
+            }    
+            if ( !isupper ( str [ i ] ) ) {
                 return false;
+            }    
         }
         // if return true, means everything is fine
         return true;
