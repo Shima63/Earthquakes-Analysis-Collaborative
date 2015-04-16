@@ -26,20 +26,23 @@ using namespace std;
 // Defined Libraries
 
 #include "print.h"
-
-// Variables
-
-string id;
-string date;
-string time;
-string tz;
-string earthquake_name;
     
 // Class Definition
     
 class earthquake {
     
     public:
+    
+        // Variables
+
+        string id;
+        string date;
+        string time;
+        string tz;
+        string earthquake_name;
+
+        vector<station> stations;
+        int valid, invalid, sign;
     
         // Set and Get Functions
         
