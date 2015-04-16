@@ -309,7 +309,8 @@ int process_file ( string fn ) {
     
     err = open_input ( in, fn, log );
     if ( err ) {
-        str << "error in reading " << fn << " file. error code: " << err << endl;
+            str << "error in reading " << fn << " file. error code: " << err
+                << endl;
         return err;
     }
     
