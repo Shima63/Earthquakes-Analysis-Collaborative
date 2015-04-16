@@ -61,6 +61,44 @@ bool station::set_type_of_band(string a){
     }
 }
 
+int network_code_enum(string str_net_code) {
+    // Case Sensitive
+    if (str_net_code == "CE")
+        return 0;
+    if (str_net_code == "CI")
+        return 1;
+    if (str_net_code == "FA")
+        return 2;
+    if (str_net_code == "NP")
+        return 3;
+    if (str_net_code == "WR")
+        return 4;
+    return -1;
+}
+
+string type_of_inst_string(types_of_instrument type_of_inst) {
+    
+    switch (type_of_inst) {
+        case High_Gain:
+            return "High Gain";
+        case Low_Gain:
+            return "Low Gain";
+        case Accelerometer:
+            return "Accelerometer";
+        default:
+            return "ILLEGAL";
+    }
+}
+
+// check for rest of the errors
+bool is_there_any_err(station st) {
+    
+    //if (st.get_network_code() <1 || st.get_network_code() >5) // err
+    //    return true;
+    
+    return false;
+}
+
 bool station::set_station_name(string a) {
     try
     {
