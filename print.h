@@ -6,6 +6,9 @@
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
 
+#ifndef PRINT_H
+#define PRINT_H
+
 // External Libraries
 
 #include <iostream>
@@ -21,3 +24,5 @@ void toupper_str ( string & );
 string toupper_str_C ( string str );
 void tolower_str ( string & );
 string tolower_str_C ( string str );
+
+#endif
