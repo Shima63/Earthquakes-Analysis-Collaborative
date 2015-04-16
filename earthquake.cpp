@@ -107,6 +107,31 @@ void earthquake::set_lon(string a){
     }
 }
 
+void earthquake::set_lat(double a) {
+    try
+    {
+        if (a < -90 || a > 90)
+            throw (22);
+        else
+            lat = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of lat is invalid" << e << endl;
+    }
+}
+void earthquake::set_lat(string a){
+    try
+    {
+        int b = str2int(a);
+        set_lat(b);
+    }
+    catch (int e)
+    {
+        set_lat(-1);
+    }
+}
+
 void earthquake::set_magnitude(double a) {
     try
     {
@@ -292,34 +317,3 @@ void earthquake::set_magnitude_Type(string a) {
         cout << "Value of month is invalid" << endl;
     }
 }
-
-
-
-
-void earthquake::set_magnitude(double a) {
-    try
-    {
-        if (a < 0 || a > 12)
-            throw (22);
-        else
-            magnitude = a;
-    }
-    catch (int e)
-    {
-        cout << "Value of magnitude is invalid" << e << endl;
-    }
-}
-void earthquake::set_magnitude(string a){
-    try
-    {
-        int b = str2int(a);
-        set_magnitude(b);
-    }
-    catch (int e)
-    {
-        set_magnitude(-1);
-    }
-}
-
-
-
