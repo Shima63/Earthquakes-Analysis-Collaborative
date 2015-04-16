@@ -7,7 +7,6 @@
  */
 
 #ifndef PRINT_H
-#define PRINT_H
 
 // External Libraries
 
@@ -19,7 +18,8 @@ using namespace std;
 
 // Prototypes
 
-void print ( ofstream &, stringstream &, bool );
+void print ( ofstream &, stringstream &, bool only2file /* = false */ );
+void print ( ofstream &, stringstream &);
 void toupper_str ( string & );
 string toupper_str_C ( string str );
 void tolower_str ( string & );
