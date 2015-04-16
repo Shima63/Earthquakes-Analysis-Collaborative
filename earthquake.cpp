@@ -458,7 +458,8 @@ int magnitude_Type_enum(string str) {
 }
 
 string earthquake::get_magnitude_Type_str() {
-    return magnitude_type2str[magnitude_Type];
+    return "fix this part";
+    //return magnitude_type2str[this->magnitude_Type];
 }
 
 bool isok_magnitude_size(double magnitude) {
@@ -519,6 +520,52 @@ int earthquake::set_mag(string lm, ofstream & log){
 
     return 0;
 }
+
+
+void toupper_str(std::string& str) {
+    
+    for (size_t i = 0; i < str.size(); ++i)
+        str[i] = toupper(str[i]);
+}
+
+string toupper_str_C(std::string str) {
+    
+    toupper_str(str);
+    return str;
+}
+
+void tolower_str(std::string& str) {
+
+    for (size_t i = 0; i < str.size(); ++i)
+        str[i] = tolower(str[i]);
+}
+
+string tolower_str_C(std::string str) {
+
+    tolower_str(str);
+    return str;
+}
+
+std::vector<std::string> &split(const std::string &s, char delim,
+                                std::vector<std::string> &elems) {
+    
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    
+    return elems;
+}
+
+std::vector<std::string> split(const std::string &s, char delim) {
+    
+    std::vector<std::string> elems;
+    split(s, delim, elems);
+    
+    return elems;
+}
+
 
 void earthquake::set_magnitude_Type(magnitude_type a) {
     try
