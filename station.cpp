@@ -128,6 +128,54 @@ bool station::set_network_code(string network_codes_value){
     }
 }
 
+
+int type_of_instrument_enum(string str_type_of_inst) {
+    toupper_str(str_type_of_inst);
+    //Case insensitive
+    if (str_type_of_inst == "HIGH-GAIN")
+        return 0;
+    if (str_type_of_inst == "LOW-GAIN")
+        return 1;
+    if (str_type_of_inst == "ACCELEROMETER")
+        return 2;
+    return -1;
+}
+
+bool station::set_type_of_instrument(types_of_instrument a) {
+    try
+    {
+        type_of_instrument = a;
+        return true;
+    }
+    catch (int e)
+    {
+        //cout << "Value of station name is invalid" << e << endl;
+        return false;
+    }
+}
+
+bool station::set_type_of_instrument(string a){
+    try
+    {
+        type_of_instrument =
+            (types_of_instrument)type_of_instrument_enum(a);
+        return true;
+    }
+    catch (int e)
+    {
+        //cout << "Value of station name is invalid" << e << endl;
+        return false;
+    }
+}
+
+string types_of_instrument_strf[3] = { "High_Gain", "Low_Gain",
+    "Accelerometer" };
+string types_of_instrument_str[3] = { "H", "L", "N" };
+char types_of_instrument_char[3] = { 'H', 'L', 'N' };
+string station::get_type_of_instrument_str(){
+    return types_of_instrument_str[type_of_instrument];
+}
+
 string types_of_band_strf[3] = { "Longperiod", "Shortperiod", "Broadband" };
 string types_of_band_str[3] = { "L", "B", "H" };
 char types_of_band_char[3] = { 'L', 'B', 'H' };
