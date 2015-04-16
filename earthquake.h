@@ -114,16 +114,6 @@ class earthquake {
         void set_dt(string str2, ofstream & log);
         void set_mag(string lm, ofstream & log);
 
-        // Other Functions
-        
-        int str2int(const std::string& str);
-        months mnth_str2enum(string mnth);
-        void print(ofstream &, stringstream &, bool only2file = false);
-        std::vector<std::string> &split(const std::string &s, char delim,
-        std::vector<std::string> &elems);
-        std::vector<std::string> split(const std::string &s, char delim);
-
-
     private:
         months month;
         magnitude_type magnitude_Type;
@@ -139,5 +129,9 @@ class earthquake {
         double magnitude;
 
 };
+
+std::vector<std::string> &split(const std::string &s, char delim,
+                                std::vector<std::string> &elems);
+std::vector<std::string> split(const std::string &s, char delim);
 
 #endif
