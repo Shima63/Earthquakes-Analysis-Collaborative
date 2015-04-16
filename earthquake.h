@@ -20,6 +20,8 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string.h>
+#include "station.h"
+#include <list>
 
 using namespace std;
 
