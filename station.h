@@ -84,8 +84,6 @@ int network_code_enum ( string str_net_code );
 int type_of_instrument_enum ( string str_type_of_inst );
 int type_of_band_enum ( string str_type_of_band );
 string type_of_inst_string ( types_of_instrument type_of_inst );
-        
-// Done by Shima
 bool isok_Orientation ( string );
 bool isok_type_of_instrument ( string );
 bool isok_type_of_band ( string );
