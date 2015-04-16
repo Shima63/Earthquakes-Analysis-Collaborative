@@ -332,6 +332,12 @@ bool isok_magnitude(string str){
     return false;
 }
 
+bool isok_timezone(string str) {
+    toupper_str(str);
+    if (str == "PST" || str == "CST" || str == "EST" || str == "MST")
+        return true;
+    return false;
+}
 
 int earthquake::set_dt(string str2, ofstream & log)
 {
