@@ -47,6 +47,7 @@ bool station::set_type_of_band ( types_of_band a ) {
         return false;
     }
 }
+
 bool station::set_type_of_band ( string a ) {
     try {
         if ( !isok_type_of_band ( a ) )
@@ -209,17 +210,22 @@ bool station::set_type_of_instrument(string a){
     }
 }
 
-string types_of_instrument_strf[3] = { "High_Gain", "Low_Gain",
-    "Accelerometer" };
-string types_of_instrument_str[3] = { "H", "L", "N" };
-char types_of_instrument_char[3] = { 'H', 'L', 'N' };
-string station::get_type_of_instrument_str(){
-    return types_of_instrument_str[type_of_instrument];
+// Definitions of instruments
+
+string types_of_instrument_strf [ 3 ] = { "High_Gain", "Low_Gain", "Accelerometer" };
+string types_of_instrument_str [ 3 ] = { "H", "L", "N" };
+char types_of_instrument_char [ 3 ] = { 'H', 'L', 'N' };
+
+string station::get_type_of_instrument_str () {
+    return types_of_instrument_str [ type_of_instrument ];
 }
 
-string types_of_band_strf[3] = { "Longperiod", "Shortperiod", "Broadband" };
-string types_of_band_str[3] = { "L", "B", "H" };
-char types_of_band_char[3] = { 'L', 'B', 'H' };
-string station::get_type_of_band_str(){
-    return types_of_band_str[type_of_band];
+// Definitions of bands
+
+string types_of_band_strf [ 3 ] = { "Longperiod", "Shortperiod", "Broadband" };
+string types_of_band_str [ 3 ] = { "L", "B", "H" };
+char types_of_band_char [ 3 ] = { 'L', 'B', 'H' };
+
+string station::get_type_of_band_str () {
+    return types_of_band_str [ type_of_band ];
 }
