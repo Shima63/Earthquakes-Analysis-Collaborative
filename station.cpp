@@ -229,3 +229,63 @@ char types_of_band_char [ 3 ] = { 'L', 'B', 'H' };
 string station::get_type_of_band_str () {
     return types_of_band_str [ type_of_band ];
 }
+
+bool isok_station_code ( string str ) {
+ 
+    // Station code: Case sensitive: Must be either 3 alphabetic characters in
+    // capital letters, or 5 numeric characters to be valid. station_code:
+    // Case Sensitive : Must be either 3 alphabetic characters in
+    // capital letters, or 5 numeric characters to be valid.string ssn;
+    
+    if ( str.size () == 3 ) {
+        for ( int i = 0; i < 3; i++ ) {
+            if ( !isalpha ( str [ i ] ) ) {
+                return false;
+            }    
+            if ( !isupper ( str [ i ] ) ) {
+                return false;
+            }    
+        }
+        
+        // if return true, means everything is fine
+        return true;
+    }
+    
+    if ( str.size () == 5 ) {
+        for ( int i = 0; i < 5; i++ ) {
+            if ( !isdigit ( str [ i ] ) ) {
+                return false;
+            }    
+        }
+        return true; // if return true, means everything is fine
+    }
+    return false;
+}
+
+
+bool isok_Orientation ( string str ) {
+ 
+    // Orientation: Case insensitive: a one to three characters combination.
+    // Each character can be any of the following two options (alphabetic or
+    // numeric, but not a combination of both):
+    // N, E, or Z (one, two or three chars)
+    // 1, 2, or 3 (one, two or three chars)
+    
+    toupper_str ( str );
+    size_t n = str.size ();
+    if ( !isdigit ( str [ 0 ] ) ) {
+        for ( size_t i = 0; i < n; i++ )
+            if ( !( str [ i ] == 'N' || str [ i ] == 'E' || str [ i ] == 'Z' ) ) {
+                return false;
+            }    
+    }
+    else {
+        for ( size_t i = 0; i < n; i++ ) {
+            if ( !( str [ i ] == '1' || str [ i ] == '2' || str [ i ] == '3' ) ) {
+                return false;
+            }
+        }    
+    }
+    return true;
+}
+
