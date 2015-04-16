@@ -203,6 +203,62 @@ void earthquake::set_day(string a){
     int b = str2int(a);
     set_day(b);
 }
+
+
+void earthquake::set_year(int y) {
+    try
+    {
+        if (y < 1800 || y > 2100)
+            throw (21);
+        else
+            yr = y;
+    }
+    catch (int e)
+    {
+        //cout << "An exception occurred. Exception Nr. " << e << '\n';
+        cout << "Value of year is invalid" << e << endl;
+    }
+}
+
+void earthquake::set_year(string a){
+    try
+    {
+        int b = str2int(a);
+        set_year(b);
+    }
+    catch (int e)
+    {
+        set_year(-1);
+    }
+}
+
+
+void earthquake::set_min(int a) {
+    try
+    {
+        if (a < 0 || a > 59)
+            throw (23);
+        else
+            min = a;
+    }
+    catch (int e)
+    {
+        cout << "Value of minute is invalid" << e << endl;
+    }
+}
+
+void earthquake::set_min(string a){
+    try
+    {
+        int b = str2int(a);
+        set_min(b);
+    }
+    catch (int e)
+    {
+        set_min(-1);
+    }
+}
+
 void earthquake::set_sec(int a) {
     try
     {
