@@ -1,5 +1,3 @@
-# <--- amir.philip.shima Makefile --->   
-
 # Compiler
 
 CC = g++
@@ -8,24 +6,10 @@ CC = g++
 
 CFLAGS = -Wall
 
-OBJECTS = amir_philip_shima
+all: H8
 
-all: amir_philip_shima
+H8: amir.philip.shima.cpp
+	$(CC) $(CFLAGS) print.cpp earthquake.cpp station.cpp amir.philip.shima.cpp -o amir.philip.shima 
 
-amir_philip_shima: amir.philip.shima.o earthquake.o station.o print.o
-	${CC} -o amir_philip_shima amir.philip.shima.o earthquake.o station.o print.o
-
-amir.philip.shima.o: amir.philip.shima.cpp
-	${CC} -c amir.philip.shima.cpp
-
-earthquake.o: earthquake.cpp
-	${CC} -c earthquake.cpp
-
-station.o: station.cpp
-	${CC} -c station.cpp 
-
-print.o: print.cpp
-	${CC} -c print.cpp
-    
 clean:
-	rm -rf ${OBJECTS}
+	rm -rf amir.philip.shima
