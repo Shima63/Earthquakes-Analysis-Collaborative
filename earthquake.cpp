@@ -7,53 +7,52 @@
  */
 
 #include "earthquake.h"
+#include "print.h"
 
- int str2int(const std::string& str)
-{
+ int str2int ( const string & str ) {
     int result = 0;
+    string::const_iterator i = str.begin ();
     
-    std::string::const_iterator i = str.begin();
-    
-    if (i == str.end())
+    if ( i == str.end () ) {
         return false;
-    
+    }    
     bool negative = false;
     
-    if (*i == '-')
-    {
+    if ( *i == '-' ) {
         negative = true;
         ++i;
         
-        if (i == str.end())
+        if ( i == str.end () ) {
             return false;
+        }    
     }
-    
     result = 0;
     
-    for (; i != str.end(); ++i)
-    {
-        if (*i < '0' || *i > '9')
+    for ( ; i != str.end (); ++i ) {
+        if ( *i < '0' || *i > '9' ) {
             return false;
-        
+        }    
         result *= 10;
         result += *i - '0';
     }
     
-    if (negative)
+    if ( negative ) {
         result = -result;
-    
+    }    
     return result;
 }
-// months
-const char *months2str[] = { "January", "February", "March", "April", "May",
-    "June", "July", "August", "September", "October", "November", "December" };
-string earthquake::get_month_str() { return months2str[month]; }
 
-months mnth_str2enum(string mnth) {
+// defining Variable Months
+
+const char *months2str [] = { "January", "February", "March", "April", "May",
+    "June", "July", "August", "September", "October", "November", "December" };
     
-    int imnth = str2int(mnth);
+string earthquake::get_month_str () { return months2str [ month ]; }
+
+months mnth_str2enum ( string mnth ) {
+    int imnth = str2int ( mnth );
     
-    switch (imnth) {
+    switch ( imnth ) {
         case 1:
             return January;
         case 2:
