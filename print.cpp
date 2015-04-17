@@ -33,7 +33,7 @@ void print ( ofstream & o, stringstream & txt, bool only2file ) {
     return;
 }
 
-void print ( ofstream & o, stringstream & txt) {
+void print ( ofstream & o, stringstream & txt ) {
     print( o, txt, false );
 }
 
