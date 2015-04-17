@@ -289,6 +289,11 @@ int process_file ( string fn ) {
     int          err = 0;
     earthquake   EQ;
     
+    // Get the file name only w/o extension
+
+    int lastindex = fn.find_last_of(".");
+    string fn_only = fn.substr(0, lastindex);
+
     // Checking the Sanity of Input File
     
     err = open_input ( in, fn, log );
@@ -309,7 +314,7 @@ int process_file ( string fn ) {
     str << "Header read correctly!" << endl << endl;
     print ( log, str );
 
-    err = open_output ( out, fn+".out" );
+    err = open_output ( out, fn_only+".out" );
     if ( err ) {
         str << "error in open output file. error code: " << err << endl;
         return err;
