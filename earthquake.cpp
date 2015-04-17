@@ -510,6 +510,9 @@ int earthquake::set_mag ( string lm, ofstream & log ) {
         print ( log, str );
         return 111;
     }
+
+    magnitude=fmagnitude_size;
+
     return 0;
 }
 

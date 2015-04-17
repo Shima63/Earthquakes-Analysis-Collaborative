@@ -21,7 +21,7 @@ using namespace std;
 
 // This "print" function Prints Messages on Files and Terminal. Message Is of Stringstream Type.
 
-void print ( ofstream & o, stringstream & txt, bool only2file /* = false */ ) {
+void print ( ofstream & o, stringstream & txt, bool only2file ) {
     cout.precision ( 3 );
     o.precision ( 3 );
     if ( !only2file ) {
