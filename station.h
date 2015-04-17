@@ -80,16 +80,16 @@ class station {
 // Other Functions
 
 // Done by Amir
-int network_code_enum ( string str_net_code );
+int network_code_enum       ( string str_net_code );
 int type_of_instrument_enum ( string str_type_of_inst );
-int type_of_band_enum ( string str_type_of_band );
-string type_of_inst_string ( types_of_instrument type_of_inst );
-bool isok_type_of_band ( string );
-bool isok_network_code ( string );
-bool is_there_any_err ( station );
+int type_of_band_enum       ( string str_type_of_band );
+string type_of_inst_string  ( types_of_instrument type_of_inst );
+bool isok_type_of_band      ( string );
+bool isok_network_code      ( string );
+bool is_there_any_err       ( station );
 
 // Done by Shima
-bool isok_Orientation ( string );
-bool isok_station_code ( string );
+bool isok_Orientation       ( string );
+bool isok_station_code       ( string );
 
 #endif
