@@ -126,8 +126,8 @@ int read_header ( ifstream & in, ofstream & log, earthquake & EQ ) {
     
     // Variable Definition
     
-    string lID, ldt, lnam, lm, eID, ID, dt, nam, geo, tm, tz, magnitude_type;
-    int err = 0;
+    string       lID, ldt, lnam, lm, eID, ID, dt, nam, geo, tm, tz, magnitude_type;
+    int          err = 0;
     stringstream str;
     
     // Getting Information about Time and Date
@@ -168,10 +168,10 @@ int read_data ( ifstream & in, ofstream & out, ofstream & log, earthquake & EQ )
     // Local Variables
     
     stringstream str;
-    string eqnet, eqst, eqbnd, eqins, eqor;
-    station   eqtmp;
-    int  cnt = 0, i = 0;
-    bool noerr;
+    string       eqnet, eqst, eqbnd, eqins, eqor;
+    station      eqtmp;
+    int          cnt = 0, i = 0;
+    bool         noerr;
     
     while ( in >> eqnet ) {
         cnt++;
@@ -335,14 +335,14 @@ int process_file ( string fn ) {
     print ( out, str );
     
     str << endl << "Total invalid entries ignored: " << setw(2) << EQ.invalid
-    << endl << "Total valid entries read: "      << setw(7) << EQ.valid
-    << endl << "Total signals produced: "        << setw(9) << EQ.sign << endl;
+        << endl << "Total valid entries read: "      << setw(7) << EQ.valid
+        << endl << "Total signals produced: "        << setw(9) << EQ.sign << endl;
     
     if ( in.is_open () ) {
-        in.close ();
+         in.close ();
     }
     if ( out.is_open () ) {
-        out.close ();
+         out.close ();
     }
     return 0;
 }
