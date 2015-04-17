@@ -5,7 +5,7 @@
  * No Copyright
  * Github account: https://github.com/Shima63/Earthquakes-Analysis-Collaborative.git
  */
-
+ 
 // External Libraries
 
 #include <iostream>
@@ -21,16 +21,20 @@ using namespace std;
 
 // This "print" function Prints Messages on Files and Terminal. Message Is of Stringstream Type.
 
-void print ( ofstream & o, stringstream & txt, bool only2file ) {
+void print ( ofstream & o, stringstream & txt, bool only2file /* = false */ ) {
     cout.precision ( 3 );
     o.precision ( 3 );
     if ( !only2file ) {
-       cout << txt.str ();
-    }
+        cout << txt.str ();
+    }    
     o << txt.str ();
     txt.str ( string () );
     txt.clear ();
     return;
+}
+
+void print ( ofstream & o, stringstream & txt) {
+    print( o, txt, false );
 }
 
 // These Functions Are for Changing to Uppercase
@@ -38,12 +42,12 @@ void print ( ofstream & o, stringstream & txt, bool only2file ) {
 void toupper_str ( string & str ) {
     for ( size_t i = 0; i < str.size (); ++i ) {
         str[i] = toupper ( str[i] );
-    }
+    }    
     return;
 }
 
 string toupper_str_C ( string str ) {
-    toupper_str(str);
+    toupper_str ( str );
     return str;
 }
 
@@ -52,8 +56,7 @@ string toupper_str_C ( string str ) {
 void tolower_str ( string & str ) {
     for ( size_t i = 0; i < str.size (); ++i ) {
         str[i] = tolower ( str[i] );
-    }
-    return;
+    }    
 }
 
 string tolower_str_C ( string str ) {

@@ -148,7 +148,7 @@ class earthquake {
 
 int str2int ( const string & str );
 months mnth_str2enum ( string mnth );
-void print( ofstream &, stringstream &, bool only2file = false );
+//void print( ofstream &, stringstream &, bool only2file = false );
 
 vector<string> & split ( const string & s, char delim, vector<string> & elems );
 vector<string> split ( const string & s, char delim );

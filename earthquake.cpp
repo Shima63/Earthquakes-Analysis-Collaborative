@@ -452,7 +452,7 @@ int magnitude_Type_enum ( string str ) {
 }
 
 string earthquake::get_magnitude_Type_str () {
-    return magnitude_type2str [ magnitude_Type ];
+    return magnitude_type2str[this->magnitude_Type];
 }
 
 bool isok_magnitude_size ( double magnitude ) {
@@ -479,17 +479,17 @@ int earthquake::set_mag ( string lm, ofstream & log ) {
     
     vector<string> astr = split ( lm, ' ' );
     
-    longitude = astr [ 0 ];
-    latitude = astr [ 1 ];
-    elevation = astr [ 2 ];
-    magnitude_type = astr [ 3 ];
-    magnitude_size = astr [ 4 ];
+    longitude        = astr [ 0 ];
+    latitude         = astr [ 1 ];
+    elevation        = astr [ 2 ];
+    set_magnitude_Type(astr [ 3 ]);
+    magnitude_size   = astr [ 4 ];
     
     char cmagnitude_size [ 50 ];
     strcpy ( cmagnitude_size, magnitude_size.c_str () );
     
     fmagnitude_size = strtod ( cmagnitude_size, & pEnd );
-    if ( !isok_magnitude ( magnitude_type ) ) {
+    if ( !isok_magnitude ( this->get_magnitude_Type_str ()) ) {
         str << "Error! Magnitude type is invalid" << endl;
         print ( log, str );
         return 110;
