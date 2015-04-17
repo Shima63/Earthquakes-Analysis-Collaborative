@@ -347,7 +347,7 @@ int earthquake::set_dt ( string str2, ofstream & log ) {
         replace ( str, str + strlen ( str ), ':', ' ' );
         
         vector<std::string> aln = split ( str2, ' ' );
-        vector<std::string> adt = split ( aln[0], '/' );
+        vector<std::string> adt = split ( aln [ 0 ], '/' );
         if ( adt.size() != 3 ) {
             throw ( 61 );
         }    
@@ -452,7 +452,7 @@ int magnitude_Type_enum ( string str ) {
 }
 
 string earthquake::get_magnitude_Type_str () {
-    return magnitude_type2str[this->magnitude_Type];
+    return magnitude_type2str [ this->magnitude_Type ];
 }
 
 bool isok_magnitude_size ( double magnitude ) {
@@ -489,7 +489,7 @@ int earthquake::set_mag ( string lm, ofstream & log ) {
     strcpy ( cmagnitude_size, magnitude_size.c_str () );
     
     fmagnitude_size = strtod ( cmagnitude_size, & pEnd );
-    if ( !isok_magnitude ( this->get_magnitude_Type_str ()) ) {
+    if ( !isok_magnitude ( this->get_magnitude_Type_str () ) ) {
         str << "Error! Magnitude type is invalid" << endl;
         print ( log, str );
         return 110;
@@ -542,7 +542,7 @@ vector<string> & split ( const string & s, char delim, vector<string> & elems ) 
 
 vector<string> split ( const string & s, char delim ) {
     vector<string> elems;
-    split(s, delim, elems);
+    split ( s, delim, elems );
     return elems;
 }
 
