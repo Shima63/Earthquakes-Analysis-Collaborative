@@ -80,7 +80,16 @@ months mnth_str2enum ( string mnth ) {
     }
     return December;
 }
- 
+
+void earthquake::set_month ( string m ) {
+    try {
+        month = mnth_str2enum ( m );
+    }
+    catch ( int e ) {
+        cout << "Value of month is invalid" << endl;
+    }
+} 
+
 void earthquake::set_lon ( double a ) {
     try {
         if ( a < -180 || a > +180 ) {
